@@ -1,0 +1,25 @@
+<app-listado-generico [listado]="peliculas">
+    <ng-container loading>
+        <img src="https://www.kibrispdr.org/data/1789/loading-gif-download-4.gif" alt="">
+    </ng-container>
+    <ng-container mensajeVacio>
+        <div>Mensaje personalizado para contenido <b>vacío</b></div>
+    </ng-container>
+    <ng-container contenido>
+
+
+        <div *ngFor="let pelicula of peliculas; let index = index" class="pelicula-contenedor">
+            <div>
+                Pelicula {{index}}: {{pelicula.titulo}} <button style="margin-left: 1rem;"
+                    (click)="remover(index)">Remover</button>
+            </div>
+            <div>
+                {{pelicula.fechaLanzamiento | date: "dd-MMMM-yyyy" | uppercase }}
+            </div>
+            <div>
+                {{pelicula.precio | currency }}
+            </div>
+        </div>
+
+    </ng-container>
+</app-listado-generico>
