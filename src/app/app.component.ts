@@ -12,12 +12,14 @@ export class AppComponent implements OnInit {
         {
           titulo: 'Spider-Man',
           fechaLanzamiento: new Date(),
-          precio: 1400.99
+          precio: 1400.99,
+          poster: 'https://cdn.pixabay.com/photo/2022/08/07/07/50/skateboard-7370081__340.png'
         },
         {
           titulo: 'Moana',
           fechaLanzamiento: new Date(),
-          precio: 300.99
+          precio: 300.99,
+          poster: 'https://cdn.pixabay.com/photo/2022/08/07/07/50/skateboard-7370081__340.png'
         }
 
       ]
@@ -32,62 +34,74 @@ export class AppComponent implements OnInit {
     {
       titulo: 'Hulk',
       fechaLanzamiento: new Date(),
-      precio: 1400.99
+      precio: 1400.99,
+      poster: 'https://cdn.pixabay.com/photo/2022/08/07/07/50/skateboard-7370081__340.png'
     },
     {
       titulo: 'Naruto',
       fechaLanzamiento: new Date(),
-      precio: 300.99
+      precio: 300.99,
+      poster: 'https://cdn.pixabay.com/photo/2022/08/07/07/50/skateboard-7370081__340.png'
     },
     {
       titulo: 'One Piece',
       fechaLanzamiento: new Date(),
-      precio: 562.99
+      precio: 562.99,
+      poster: 'https://cdn.pixabay.com/photo/2022/08/07/07/50/skateboard-7370081__340.png'
     },
     {
       titulo: 'Hulk',
       fechaLanzamiento: new Date(),
-      precio: 1400.99
+      precio: 1400.99,
+      poster: 'https://cdn.pixabay.com/photo/2022/08/07/07/50/skateboard-7370081__340.png'
     },
     {
       titulo: 'Naruto',
       fechaLanzamiento: new Date(),
-      precio: 300.99
+      precio: 300.99,
+      poster: 'https://cdn.pixabay.com/photo/2022/08/07/07/50/skateboard-7370081__340.png'
     },
     {
       titulo: 'One Piece',
       fechaLanzamiento: new Date(),
-      precio: 562.99
+      precio: 562.99,
+      poster: 'https://cdn.pixabay.com/photo/2022/08/07/07/50/skateboard-7370081__340.png'
     },
     {
       titulo: 'Hulk',
       fechaLanzamiento: new Date(),
-      precio: 1400.99
+      precio: 1400.99,
+      poster: 'https://cdn.pixabay.com/photo/2022/08/07/07/50/skateboard-7370081__340.png'
     },
     {
       titulo: 'Naruto',
       fechaLanzamiento: new Date(),
-      precio: 300.99
+      precio: 300.99,
+      poster: 'https://cdn.pixabay.com/photo/2022/08/07/07/50/skateboard-7370081__340.png'
     },
     {
       titulo: 'One Piece',
       fechaLanzamiento: new Date(),
-      precio: 562.99
+      precio: 562.99,
+      poster: 'https://cdn.pixabay.com/photo/2022/08/07/07/50/skateboard-7370081__340.png'
     },
     {
       titulo: 'Hulk',
       fechaLanzamiento: new Date(),
-      precio: 1400.99
+      precio: 1400.99,
+      poster: 'https://cdn.pixabay.com/photo/2022/08/07/07/50/skateboard-7370081__340.png'
     },
     {
       titulo: 'Naruto',
       fechaLanzamiento: new Date(),
-      precio: 300.99
+      precio: 300.99,
+      poster: 'https://cdn.pixabay.com/photo/2022/08/07/07/50/skateboard-7370081__340.png'
     },
     {
       titulo: 'One Piece',
       fechaLanzamiento: new Date(),
-      precio: 562.99
+      precio: 562.99,
+      poster: 'https://cdn.pixabay.com/photo/2022/08/07/07/50/skateboard-7370081__340.png'
     }
 
   ]

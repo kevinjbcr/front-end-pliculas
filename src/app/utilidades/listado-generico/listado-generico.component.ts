@@ -5,13 +5,10 @@ import { Component, Input, OnInit } from '@angular/core';
   templateUrl: './listado-generico.component.html',
   styleUrls: ['./listado-generico.component.css']
 })
-export class ListadoGenericoComponent implements OnInit {
+export class ListadoGenericoComponent {
 
   @Input()
   listado
   
-  ngOnInit(): void {
-    throw new Error('Method not implemented.');
-  }
 
 }
