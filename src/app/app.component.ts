@@ -96,4 +96,8 @@ export class AppComponent implements OnInit {
     return valor * 2
   }
 
+  manejarRated(voto: number): void{
+    alert(voto)
+  }
+
 }
