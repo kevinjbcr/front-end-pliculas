@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { actoreCreacionDTO } from '../actor';
+import { actorDTO, actoreCreacionDTO } from '../actor';
 
 @Component({
   selector: 'app-formulario-actores',
@@ -15,16 +15,17 @@ export class FormularioActoresComponent implements OnInit {
 
   //Emite hacia al componente padre
   @Output()
-  submit: EventEmitter<actoreCreacionDTO> = new EventEmitter<actoreCreacionDTO>()
+  submit: EventEmitter<actorDTO> = new EventEmitter<actorDTO>()
 
   //Parametros del componente
   @Input()
-  modelo: actoreCreacionDTO
+  modelo: actorDTO
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({
       nombre: ['', { validators: [Validators.required] }],
-      fechaNacimiento: ''
+      fechaNacimiento: '',
+      foto: ''
     })
 
     if (this.modelo !== undefined) {
@@ -34,6 +35,10 @@ export class FormularioActoresComponent implements OnInit {
 
   onSubmit() {
     this.submit.emit(this.form.value)
+  }
+
+  archivoSeleccionado(file) {
+    this.form.get('foto').setValue(file)
   }
 
 
