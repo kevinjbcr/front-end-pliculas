@@ -35,6 +35,10 @@
     <app-selector-multiple [NoSeleccionados]="generosNoSeleccionados" [Seleccionados]="generosSeleccionados">
     </app-selector-multiple>
 
+    <h4>Seleccione los cines</h4>
+    <app-selector-multiple [NoSeleccionados]="cinesNoSeleccionados" [Seleccionados]="cinesSeleccionados">
+    </app-selector-multiple>
+
     <div>
         <button mat-flat-button color="primary" [disabled]="form.invalid">Guardar Cambios</button>
         <a mat-stroked-button routerLink="/">Cancelar</a>
