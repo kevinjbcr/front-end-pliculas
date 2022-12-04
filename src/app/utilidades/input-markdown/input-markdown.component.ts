@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-input-markdown',
@@ -7,8 +7,12 @@ import { Component, EventEmitter, Output } from '@angular/core';
 })
 export class InputMarkdownComponent {
 
+  @Input()
   contenidoMarkDown = ''
 
+  @Input()
+  placeHolderTextarea: string = 'Texto'
+  
   @Output()
   changeMarkdown: EventEmitter<string> = new EventEmitter<string>()
 
