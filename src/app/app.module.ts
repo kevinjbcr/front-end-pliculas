@@ -28,7 +28,8 @@ import { FiltroPeliculasComponent } from './peliculas/filtro-peliculas/filtro-pe
 import { FormularioActoresComponent } from './actores/formulario-actores/formulario-actores.component';
 import { InputImgComponent } from './utilidades/input-img/input-img.component';
 import { InputMarkdownComponent } from './utilidades/input-markdown/input-markdown.component';
-import { MarkdownModule } from 'ngx-markdown'
+import { MarkdownModule } from 'ngx-markdown';
+import { FormularioCineComponent } from './cines/formulario-cine/formulario-cine.component'
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import { MarkdownModule } from 'ngx-markdown'
     FiltroPeliculasComponent,
     FormularioActoresComponent,
     InputImgComponent,
-    InputMarkdownComponent
+    InputMarkdownComponent,
+    FormularioCineComponent
   ],
   imports: [
     BrowserModule,

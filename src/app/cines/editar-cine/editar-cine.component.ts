@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { cineCreacionDTO, cineDTO } from '../cine';
 
 @Component({
   selector: 'app-editar-cine',
@@ -7,4 +8,10 @@ import { Component } from '@angular/core';
 })
 export class EditarCineComponent {
 
+  modelo: cineDTO = { nombre: 'Cinepolis' }
+
+  guardarCambios(cine: cineCreacionDTO) {
+    console.log(cine)
+
+  }
 }
