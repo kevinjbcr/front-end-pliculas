@@ -10,7 +10,6 @@ export class CrearPeliculaComponent {
 
   guardarCambios(pelicula: PeliculaCreacionDTO) {
     console.log(pelicula)
-
   }
 
 }

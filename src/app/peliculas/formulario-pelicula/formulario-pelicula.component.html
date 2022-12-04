@@ -31,6 +31,10 @@
         [contenidoMarkDown]="modelo?.resumen">
     </app-input-markdown>
 
+    <h4>Seleccione los géneros</h4>
+    <app-selector-multiple [NoSeleccionados]="generosNoSeleccionados" [Seleccionados]="generosSeleccionados">
+    </app-selector-multiple>
+
     <div>
         <button mat-flat-button color="primary" [disabled]="form.invalid">Guardar Cambios</button>
         <a mat-stroked-button routerLink="/">Cancelar</a>
