@@ -15,7 +15,7 @@ export class FormularioActoresComponent implements OnInit {
 
   //Emite hacia al componente padre
   @Output()
-  submit: EventEmitter<actorDTO> = new EventEmitter<actorDTO>()
+  OnSubmit: EventEmitter<actorDTO> = new EventEmitter<actorDTO>()
 
   //Parametros del componente
   @Input()
@@ -25,7 +25,8 @@ export class FormularioActoresComponent implements OnInit {
     this.form = this.formBuilder.group({
       nombre: ['', { validators: [Validators.required] }],
       fechaNacimiento: '',
-      foto: ''
+      foto: '',
+      biografia: ''
     })
 
     if (this.modelo !== undefined) {
@@ -33,8 +34,13 @@ export class FormularioActoresComponent implements OnInit {
     }
   }
 
+  cambioMarkdown(event: string){
+    this.form.get('biografia').setValue(event)
+
+  }
+
   onSubmit() {
-    this.submit.emit(this.form.value)
+    this.OnSubmit.emit(this.form.value)
   }
 
   archivoSeleccionado(file) {
