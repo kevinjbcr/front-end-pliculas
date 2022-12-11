@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { generoCreacionDTO } from '../formulario-generos/genero';
+import { generoCreacionDTO } from '../genero';
 
 @Component({
   selector: 'app-editar-genero',
