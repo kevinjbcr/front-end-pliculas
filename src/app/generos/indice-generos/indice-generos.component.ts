@@ -17,7 +17,7 @@ export class IndiceGenerosComponent implements OnInit {
   columnasAMostrar = ['id', 'nombre', 'acciones']
   cantidadTotalRegistros;
   paginaActual = 1;
-  cantidadRegistrosAMostrar = 5;
+  cantidadRegistrosAMostrar = 10;
 
   ngOnInit(): void {
     this.cargarRegistros(this.paginaActual, this.cantidadRegistrosAMostrar)
