@@ -1,4 +1,5 @@
 export interface generoCreacionDTO {
+    id: number
     nombre: string
 }
 
