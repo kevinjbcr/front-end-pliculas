@@ -20,7 +20,7 @@ export class EditarActorComponent implements OnInit {
     })
   }
 
-  guardarCambios(actor: actorDTO) {
+  guardarCambios(actor: actoreCreacionDTO) {
     console.log(actor)
 
   }

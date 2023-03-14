@@ -15,11 +15,14 @@ export class FormularioActoresComponent implements OnInit {
 
   //Emite hacia al componente padre
   @Output()
-  OnSubmit: EventEmitter<actorDTO> = new EventEmitter<actorDTO>()
+  OnSubmit: EventEmitter<actoreCreacionDTO> = new EventEmitter<actoreCreacionDTO>()
 
   //Parametros del componente
   @Input()
   modelo: actorDTO
+
+  @Input()
+  errores: string[] = []
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({
@@ -34,7 +37,7 @@ export class FormularioActoresComponent implements OnInit {
     }
   }
 
-  cambioMarkdown(event: string){
+  cambioMarkdown(event: string) {
     this.form.get('biografia').setValue(event)
 
   }
