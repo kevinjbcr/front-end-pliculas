@@ -9,5 +9,5 @@ export interface actoreCreacionDTO {
     nombre: string
     fechaNacimiento: Date
     foto: File
-
+    biografia: string
 }
