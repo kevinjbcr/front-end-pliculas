@@ -1,3 +1,4 @@
 <h2>Editar Actor</h2>
 
-<app-formulario-actores (OnSubmit)="guardarCambios($event)" [modelo]="modelo"></app-formulario-actores>
+<app-formulario-actores *ngIf="modelo" (OnSubmit)="guardarCambios($event)" [modelo]="modelo"></app-formulario-actores>
+<mat-spinner *ngIf="!modelo"></mat-spinner>

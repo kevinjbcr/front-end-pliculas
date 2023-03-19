@@ -49,5 +49,14 @@ export class ActoresService {
   public borrar(id: number) {
     return this.http.delete(`${this.apiURL}/${id}`);
   }
+
+  public obtenerPorId(id: number): Observable<actorDTO> {
+    return this.http.get<actorDTO>(`${this.apiURL}/${id}`)
+  }
+
+  public editar(id: number, actor: actoreCreacionDTO) {
+    const formData = this.construirFormData(actor)
+    return this.http.put(`${this.apiURL}/${id}`, formData)
+  }
   
 }
