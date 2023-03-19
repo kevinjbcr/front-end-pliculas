@@ -1,7 +1,8 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { actoreCreacionDTO } from './actor';
+import { actorDTO, actoreCreacionDTO } from './actor';
 import { formatearFecha } from '../utilidades/utilidades';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -37,4 +38,16 @@ export class ActoresService {
     return formData;
 
   }
+
+  public obtenerTodos(pagina: number, cantidadRegistrosAMostrar: number): Observable<any> {
+    let params = new HttpParams();
+    params = params.append('pagina', pagina.toString());
+    params = params.append('recordsPorPagina', cantidadRegistrosAMostrar.toString());
+    return this.http.get<actorDTO[]>(this.apiURL, { observe: 'response', params })
+  }
+
+  public borrar(id: number) {
+    return this.http.delete(`${this.apiURL}/${id}`);
+  }
+  
 }
