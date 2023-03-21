@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { PeliculaCreacionDTO, PeliculaDTO, PeliculasPosGet } from './pelicula';
+import { LandingPageDTO, PeliculaCreacionDTO, PeliculaDTO, PeliculasPosGet } from './pelicula';
 import { formatearFecha } from '../utilidades/utilidades';
 
 @Injectable({
@@ -19,6 +19,10 @@ export class PeliculasService {
 
   public obtenerPorId(id: number): Observable<PeliculaDTO> {
     return this.http.get<PeliculaDTO>(`${this.apiURL}/${id}`)
+  }
+
+  public obtenerLandingPage(): Observable<LandingPageDTO>{
+    return this.http.get<LandingPageDTO>(this.apiURL)
   }
 
   public crear(pelicula: PeliculaCreacionDTO) {

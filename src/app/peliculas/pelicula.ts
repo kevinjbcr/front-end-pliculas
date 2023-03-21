@@ -3,6 +3,7 @@ import { cineDTO } from "../cines/cine"
 import { generoDTO } from "../generos/genero"
 
 export interface PeliculaDTO {
+    id: number
     titulo: string
     resumen: string
     enCines: boolean
@@ -12,6 +13,7 @@ export interface PeliculaDTO {
     generos: generoDTO[]
     actores: actorPeliculaDTO[]
     cines: cineDTO[]
+    proximosEstrenos: boolean
 }
 
 export interface PeliculaCreacionDTO {
@@ -29,4 +31,9 @@ export interface PeliculaCreacionDTO {
 export interface PeliculasPosGet {
     generos: generoDTO[]
     cines: cineDTO[]
+}
+
+export interface LandingPageDTO {
+    enCines: PeliculaDTO[]
+    proximosEstrenos: PeliculaDTO[]
 }

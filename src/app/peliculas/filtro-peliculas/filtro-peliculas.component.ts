@@ -2,6 +2,7 @@ import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { PeliculaDTO } from '../pelicula';
 
 @Component({
   selector: 'app-filtro-peliculas',
@@ -20,12 +21,7 @@ export class FiltroPeliculasComponent implements OnInit {
     { id: 3, nombre: 'Comedia' },
   ]
 
-  peliculas = [
-    { titulo: 'Dragon Ball', enCines: false, proximosEstrenos: false, generos: [1, 2], poster: 'https://cdn.pixabay.com/photo/2022/08/07/07/50/skateboard-7370081__340.png' },
-    { titulo: 'Naruto', enCines: true, proximosEstrenos: true, generos: [3], poster: 'https://cdn.pixabay.com/photo/2022/08/07/07/50/skateboard-7370081__340.png' },
-    { titulo: 'One Pice', enCines: true, proximosEstrenos: false, generos: [1, 3], poster: 'https://cdn.pixabay.com/photo/2022/08/07/07/50/skateboard-7370081__340.png' },
-  ]
-
+  peliculas: PeliculaDTO[] = []
   peliculasOriginal = this.peliculas
 
   formularioOriginal = {
