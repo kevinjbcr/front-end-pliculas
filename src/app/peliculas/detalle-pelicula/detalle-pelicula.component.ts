@@ -16,7 +16,7 @@ export class DetallePeliculaComponent implements OnInit {
   pelicula: PeliculaDTO
   fechaLanzamiento: Date
   trailerURL: SafeResourceUrl
-  coordenadas: CoordenadaConMensaje[]
+  coordenadas: CoordenadaConMensaje[] = []
 
   ngOnInit(): void {
     this.activateRoute.params.subscribe({
@@ -24,12 +24,12 @@ export class DetallePeliculaComponent implements OnInit {
         this.peliculasServices.obtenerPorId(params.id).subscribe({
           next: (pelicula) => {
             console.log(pelicula)
-            
+
             this.pelicula = pelicula
             this.fechaLanzamiento = new Date(this.pelicula.fechaLanzamiento)
             this.trailerURL = this.generarURLYoutubeEmbed(this.pelicula.trailer)
             this.coordenadas = pelicula.cines.map(cine => {
-              return {longitud: cine.longitud, latitud: cine.latitud, mensaje: cine.nombre}
+              return { longitud: cine.longitud, latitud: cine.latitud, mensaje: cine.nombre }
             })
           }
         })
