@@ -1,8 +1,10 @@
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 import { MatTable } from '@angular/material/table';
+import { actorPeliculaDTO } from '../actor';
+import { ActoresService } from '../actores.service';
 
 @Component({
   selector: 'app-autocomplete-actores',
@@ -11,24 +13,26 @@ import { MatTable } from '@angular/material/table';
 })
 export class AutocompleteActoresComponent implements OnInit {
 
+  constructor(private actoresService: ActoresService) { }
+
+  @Input()
   control: FormControl = new FormControl()
 
-  actores = [
-    { nombre: 'Kevin', foto: 'https://cdn.pixabay.com/photo/2022/08/07/07/50/skateboard-7370081__340.png', personaje: '' },
-    { nombre: 'Juan', foto: 'https://cdn.pixabay.com/photo/2022/08/07/07/50/skateboard-7370081__340.png', personaje: '' },
-    { nombre: 'Mauricio', foto: 'https://cdn.pixabay.com/photo/2022/08/07/07/50/skateboard-7370081__340.png', personaje: '' },
-  ]
-
-  actoresOriginal = this.actores
-  actoresSeleccionados = []
+  
+  @Input()
+  actoresSeleccionados: actorPeliculaDTO[] = []
 
   columnasAMostrar = ['imagen', 'nombre', 'personaje', 'acciones']
+
   @ViewChild(MatTable) table: MatTable<any>
+  actoresAMostrar: actorPeliculaDTO[] = []
 
   ngOnInit(): void {
-    this.control.valueChanges.subscribe(valor => {
-      this.actores = this.actoresOriginal
-      this.actores = this.actores.filter(actor => actor.nombre.indexOf(valor) !== -1)
+    this.control.valueChanges.subscribe(nombre => {
+      this.actoresService.obtenerPorNombre(nombre)
+        .subscribe({
+          next: (actores) => { this.actoresAMostrar = actores }
+        })
     })
   }
 

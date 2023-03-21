@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PeliculaCreacionDTO } from '../pelicula';
 import { MultipleSelectorModel } from 'src/app/utilidades/selector-multiple/MultipleSelectorModel';
 import { PeliculasService } from '../peliculas.service';
+import { parsearErroresAPI } from 'src/app/utilidades/utilidades';
 
 @Component({
   selector: 'app-crear-pelicula',
@@ -14,6 +15,7 @@ export class CrearPeliculaComponent implements OnInit {
 
   generosNoSeleccionados: MultipleSelectorModel[]
   cinesNoSeleccionados: MultipleSelectorModel[]
+  errores: string[] = []
 
   ngOnInit(): void {
     this.peliculasService.posGet()
@@ -35,7 +37,11 @@ export class CrearPeliculaComponent implements OnInit {
   }
 
   guardarCambios(pelicula: PeliculaCreacionDTO) {
-    console.log(pelicula)
+    this.peliculasService.crear(pelicula)
+      .subscribe({
+        next: () => console.log('Exitoso'),
+        error: (error) => this.errores = parsearErroresAPI(error)
+      })
   }
 
 }
