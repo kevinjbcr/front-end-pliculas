@@ -9,6 +9,9 @@ export interface PeliculaDTO {
     fechaLanzamiento: Date
     trailer: string
     poster: string
+    generos: generoDTO[]
+    actores: actorPeliculaDTO[]
+    cines: cineDTO[]
 }
 
 export interface PeliculaCreacionDTO {

@@ -13,6 +13,7 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
 import { CrearPeliculaComponent } from './peliculas/crear-pelicula/crear-pelicula.component';
 import { EditarPeliculaComponent } from './peliculas/editar-pelicula/editar-pelicula.component';
 import { FiltroPeliculasComponent } from './peliculas/filtro-peliculas/filtro-peliculas.component';
+import { DetallePeliculaComponent } from './peliculas/detalle-pelicula/detalle-pelicula.component';
 
 const routes: Routes = [
   { path: '', component: LandingPageComponent },
@@ -32,6 +33,7 @@ const routes: Routes = [
   { path: 'peliculas/crear', component: CrearPeliculaComponent },
   { path: 'peliculas/editar/:id', component: EditarPeliculaComponent },
   { path: 'peliculas/buscar', component: FiltroPeliculasComponent },
+  { path: 'pelicula/:id', component: DetallePeliculaComponent },
   
   /** Atrapa excepciones */
   { path: '**', redirectTo: '' },

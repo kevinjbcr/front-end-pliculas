@@ -8,10 +8,7 @@ import { PeliculaCreacionDTO, PeliculaDTO } from '../pelicula';
 })
 export class EditarPeliculaComponent {
 
-  modelo: PeliculaDTO = {
-    titulo: 'Naruto', trailer: 'https://youtu.be/MK1uU3sfKfs', enCines: true, resumen: 'resumen...',
-    fechaLanzamiento: new Date(), poster: 'https://cdn.pixabay.com/photo/2022/08/07/07/50/skateboard-7370081__340.png'
-  }
+  modelo: PeliculaDTO;
 
   guardarCambios(pelicula: PeliculaCreacionDTO) {
     console.log(pelicula)
