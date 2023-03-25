@@ -65,4 +65,8 @@ export class PeliculasService {
     return this.http.get<PeliculaDTO[]>(`${this.apiURL}/filtrar`, { params, observe: 'response' })
   }
 
+  public borrar(id: number){
+    return this.http.delete(`${this.apiURL}/${id}`)
+  }
+
 }
