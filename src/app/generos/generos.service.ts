@@ -12,11 +12,15 @@ export class GenerosService {
 
   private apiURL = 'https://localhost:7067/api/generos'
 
-  public obtenerTodos(pagina: number, cantidadRegistrosAMostrar: number): Observable<any> {
+  public obtenerPaginado(pagina: number, cantidadRegistrosAMostrar: number): Observable<any> {
     let params = new HttpParams();
     params = params.append('pagina', pagina.toString());
     params = params.append('recordsPorPagina', cantidadRegistrosAMostrar.toString());
     return this.http.get<generoDTO[]>(this.apiURL, { observe: 'response', params })
+  }
+
+  public obtenerTodos() {
+    return this.http.get<generoDTO[]>(`${this.apiURL}/todos`)
   }
 
   public crear(genero: generoCreacionDTO) {

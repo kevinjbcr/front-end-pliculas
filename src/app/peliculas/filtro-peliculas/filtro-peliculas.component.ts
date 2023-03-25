@@ -3,6 +3,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { PeliculaDTO } from '../pelicula';
+import { generoDTO } from 'src/app/generos/genero';
+import { GenerosService } from 'src/app/generos/generos.service';
+import { PeliculasService } from '../peliculas.service';
+import { PageEvent } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-filtro-peliculas',
@@ -11,18 +15,16 @@ import { PeliculaDTO } from '../pelicula';
 })
 export class FiltroPeliculasComponent implements OnInit {
 
-  constructor(private formBuilder: FormBuilder, private location: Location, private activatedRoute: ActivatedRoute) { }
+  constructor(private formBuilder: FormBuilder, private location: Location, private activatedRoute: ActivatedRoute, private generosService: GenerosService, private peliculasService: PeliculasService) { }
 
   form: FormGroup
 
-  generos = [
-    { id: 1, nombre: 'Drama' },
-    { id: 2, nombre: 'Acción' },
-    { id: 3, nombre: 'Comedia' },
-  ]
+  generos: generoDTO[] = []
 
-  peliculas: PeliculaDTO[] = []
-  peliculasOriginal = this.peliculas
+  peliculas: PeliculaDTO[]
+  paginaActual = 1
+  cantidadElementosAMostrar = 10
+  cantidadElementos
 
   formularioOriginal = {
     titulo: '',
@@ -32,15 +34,20 @@ export class FiltroPeliculasComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.form = this.formBuilder.group(this.formularioOriginal)
-    this.leerValoresURL()
-    this.buscarPeliculas(this.form.value)
+    this.generosService.obtenerTodos().subscribe({
+      next: (generos) => {
+        this.generos = generos
+        this.form = this.formBuilder.group(this.formularioOriginal)
+        this.leerValoresURL()
+        this.buscarPeliculas(this.form.value)
 
-    this.form.valueChanges.subscribe(valores => {
-      this.peliculas = this.peliculasOriginal
-      this.buscarPeliculas(valores)
-      this.escribirParametrosBusquedaEnURL()
+        this.form.valueChanges.subscribe(valores => {
+          this.buscarPeliculas(valores)
+          this.escribirParametrosBusquedaEnURL()
+        })
+      }
     })
+
   }
 
   private leerValoresURL() {
@@ -70,7 +77,7 @@ export class FiltroPeliculasComponent implements OnInit {
 
     var valoresFormulario = this.form.value
 
-    if (valoresFormulario.titulo) {
+    if (valoresFormulario.titulo) { 
       queryStrings.push(`titulo=${valoresFormulario.titulo}`)
     }
     if (valoresFormulario.generoId !== 0) {
@@ -88,22 +95,25 @@ export class FiltroPeliculasComponent implements OnInit {
   }
 
   buscarPeliculas(valores: any) {
-    if (valores.titulo) {
-      this.peliculas = this.peliculas.filter(pelicula => pelicula.titulo.indexOf(valores.titulo) !== -1)
-    }
-    if (valores.generoId !== 0) {
-      this.peliculas = this.peliculas.filter(pelicula => pelicula.generos.indexOf(valores.generoId) !== -1)
-    }
-    if (valores.enCines) {
-      this.peliculas = this.peliculas.filter(pelicula => pelicula.enCines)
-    }
-    if (valores.proximosEstrenos) {
-      this.peliculas = this.peliculas.filter(pelicula => pelicula.proximosEstrenos)
-    }
+    valores.pagina = this.paginaActual
+    valores.recordsPorPagina = this.cantidadElementosAMostrar
+    this.peliculasService.filtrar(valores).subscribe({
+      next: (response) => {
+        this.peliculas = response.body
+        this.escribirParametrosBusquedaEnURL()
+        this.cantidadElementos = response.headers.get('cantidadTotalRegistros')
+      }
+    })
   }
 
   limpiar() {
     this.form.patchValue(this.formularioOriginal)
+  }
+
+  paginatorUpdate(datos: PageEvent){
+    this.paginaActual = datos.pageIndex + 1
+    this.cantidadElementosAMostrar = datos.pageSize
+    this.buscarPeliculas(this.form.value)
   }
 
 
