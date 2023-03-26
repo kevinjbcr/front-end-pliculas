@@ -4,6 +4,8 @@ import { ActivatedRoute } from '@angular/router';
 import { PeliculaDTO } from '../pelicula';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { CoordenadaConMensaje } from 'src/app/utilidades/mapa/coordenada';
+import { RatingService } from 'src/app/rating/rating.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-detalle-pelicula',
@@ -12,7 +14,7 @@ import { CoordenadaConMensaje } from 'src/app/utilidades/mapa/coordenada';
 })
 export class DetallePeliculaComponent implements OnInit {
 
-  constructor(private peliculasServices: PeliculasService, private activateRoute: ActivatedRoute, private sanitizer: DomSanitizer) { }
+  constructor(private peliculasServices: PeliculasService, private activateRoute: ActivatedRoute, private sanitizer: DomSanitizer, private ratingService: RatingService) { }
   pelicula: PeliculaDTO
   fechaLanzamiento: Date
   trailerURL: SafeResourceUrl
@@ -35,6 +37,13 @@ export class DetallePeliculaComponent implements OnInit {
         })
       }
     })
+  }
+
+  rated(puntuacion: number) {
+    this.ratingService.rate(this.pelicula.id, puntuacion)
+      .subscribe({
+        next: () => Swal.fire("Exitoso", "Su voto ha sido recibido", 'success')
+      })
   }
 
   generarURLYoutubeEmbed(url: any) {

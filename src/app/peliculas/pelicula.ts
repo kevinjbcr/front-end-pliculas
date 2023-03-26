@@ -14,6 +14,8 @@ export interface PeliculaDTO {
     actores: actorPeliculaDTO[]
     cines: cineDTO[]
     proximosEstrenos: boolean
+    votoUsuario: number
+    promedioVoto: number
 }
 
 export interface PeliculaCreacionDTO {
