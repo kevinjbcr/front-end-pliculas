@@ -13,6 +13,8 @@ export class SeguridadService {
   private apiURL = 'https://localhost:7067/api/cuentas'
   private readonly llaveToken = 'token'
   private readonly llaveExpiracion = 'token-expiracion'
+  private readonly campoRol = 'role'
+
 
   estaLogueado(): boolean {
     const token = localStorage.getItem(this.llaveToken)
@@ -36,7 +38,7 @@ export class SeguridadService {
   }
 
   obtenerRol(): string {
-    return ''
+    return this.obtenerCampoJWT(this.campoRol)
   }
 
   obtenerCampoJWT(campo: string): string {
