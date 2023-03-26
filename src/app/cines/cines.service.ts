@@ -2,6 +2,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { cineCreacionDTO, cineDTO } from './cine';
 import { Observable } from 'rxjs';
+import { environment } from '../seguridad/environments/environments.prod';
 
 
 @Injectable({
@@ -11,7 +12,7 @@ export class CinesService {
 
   constructor(private http: HttpClient) { }
 
-  private apiURL = 'https://localhost:7067/api/cines'
+  private apiURL = environment.apiURL + 'cines'
 
   public crear(cine: cineCreacionDTO) {
     return this.http.post(this.apiURL, cine)
@@ -34,5 +35,5 @@ export class CinesService {
   public editar(id: number, cine: cineCreacionDTO) {
     return this.http.put(`${this.apiURL}/${id}`, cine)
   }
-  
+
 }

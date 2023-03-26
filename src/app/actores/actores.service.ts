@@ -3,13 +3,14 @@ import { Injectable } from '@angular/core';
 import { actorDTO, actorPeliculaDTO, actoreCreacionDTO } from './actor';
 import { formatearFecha } from '../utilidades/utilidades';
 import { Observable } from 'rxjs';
+import { environment } from '../seguridad/environments/environments.prod';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ActoresService {
 
-  private apiURL = 'https://localhost:7067/api/actores'
+  private apiURL = environment.apiURL + 'actores'
 
   constructor(private http: HttpClient) { }
 

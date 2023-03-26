@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { credencialesUsuario, respuestaAutenticacion, usuarioDTO } from './seguridad';
+import { environment } from './environments/environments.prod';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ export class SeguridadService {
 
   constructor(private httpClient: HttpClient) { }
 
-  private apiURL = 'https://localhost:7067/api/cuentas'
+  private apiURL = environment.apiURL + 'cuentas'
   private readonly llaveToken = 'token'
   private readonly llaveExpiracion = 'token-expiracion'
   private readonly campoRol = 'role'

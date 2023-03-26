@@ -2,6 +2,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { generoCreacionDTO, generoDTO } from './genero';
+import { environment } from '../seguridad/environments/environments.prod';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ export class GenerosService {
 
   constructor(private http: HttpClient) { }
 
-  private apiURL = 'https://localhost:7067/api/generos'
+  private apiURL = environment.apiURL + 'generos'
 
   public obtenerPaginado(pagina: number, cantidadRegistrosAMostrar: number): Observable<any> {
     let params = new HttpParams();
